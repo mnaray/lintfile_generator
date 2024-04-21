@@ -1,5 +1,38 @@
-<h1>Rules#index</h1>
-<p>Find me in app/views/rules/index.html.erb</p>
+<h1>Rules</h1>
+<p>Select the rules you would like to enable for your project.</p>
 
-<%= link_to("Go to result route", {:action => "result"}) %>
+<p>Info: Broken rules will raise exceptions when running the linter.</p>
+
+<p>
+  <%= link_to("Go to result route", {:action => "result"}) %>
+</p>
+
+<%= form_tag({:action => "result"}, :method => "get") do %>
+  <div>
+    <%= check_box_tag(:accessor_pairs) %>
+    <%= label_tag(:accessor_pairs, "accessor pairs") %>
+  </div>
+  <div>
+    <%= check_box_tag(:arrow_body_style) %>
+    <%= label_tag(:arrow_body_style, "arrow body style") %>
+  </div>
+  <div>
+    <%= check_box_tag(:block_scoped_var) %>
+    <%= label_tag(:block_scoped_var, "block scoped var") %>
+  </div>
+  <div>
+    <%= check_box_tag(:camelcase) %>
+    <%= label_tag(:camelcase, "camelcase") %>
+  </div>
+  <div>
+    <%= check_box_tag(:capitalized_comments) %>
+    <%= label_tag(:capitalized_comments, "capitalized comments") %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= submit_tag("generate config file") %>
+  </div>
+<% end %>
 
